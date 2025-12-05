@@ -58,23 +58,6 @@ if "df_geo" not in st.session_state:
     st.session_state["df_geo"] = load_geocoded()
 
 df = st.session_state["df"]
-# --- SIDEBAR (à mettre partout) ---
-st.sidebar.title("📌 Menu & Filtres")
-st.sidebar.markdown("**Dataset : Trafic annuel RATP — 2020**")
-
-reseaux = sorted(df["reseau"].dropna().unique())
-
-if "reseau_sel" not in st.session_state:
-    st.session_state["reseau_sel"] = reseaux[0]
-
-reseau_sel = st.sidebar.selectbox(
-    "Sélectionner un réseau",
-    reseaux,
-    index=reseaux.index(st.session_state["reseau_sel"])
-)
-
-st.session_state["reseau_sel"] = reseau_sel
-# -----------------------------------
 
 st.title("🚇 Dashboard RATP 2020")
 st.markdown("Bienvenue dans l'application multipage. Utilisez le menu de gauche.")
